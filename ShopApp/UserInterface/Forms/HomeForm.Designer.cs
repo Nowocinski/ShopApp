@@ -40,6 +40,7 @@
             this.loggingButton.TabIndex = 0;
             this.loggingButton.Text = "Zaloguj";
             this.loggingButton.UseVisualStyleBackColor = true;
+            this.loggingButton.Click += new System.EventHandler(this.loggingButton_Click);
             // 
             // signupButton
             // 

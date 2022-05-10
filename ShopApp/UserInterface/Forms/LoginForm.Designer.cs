@@ -40,6 +40,7 @@
             this.signupButton.TabIndex = 0;
             this.signupButton.Text = "Nie masz konta? Zarejestruj się";
             this.signupButton.UseVisualStyleBackColor = true;
+            this.signupButton.Click += new System.EventHandler(this.signupButton_Click);
             // 
             // backButton
             // 
