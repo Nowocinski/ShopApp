@@ -5,9 +5,22 @@ namespace DataAccessLayer.Context
 {
     public class DataBaseContext : DbContext
     {
+        private static DataBaseContext _instance = null;
+        public static DataBaseContext Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new DataBaseContext();
+                }
+                return _instance;
+            }
+        }
 
         public DataBaseContext()
         {
+
         }
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
