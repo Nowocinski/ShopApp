@@ -7,6 +7,7 @@ namespace DataAccessLayer.Repositories
     public interface IUserRepository
     {
         UserViewModel LogIn(string email, string password);
+        void Add(string email, string password, string firstname, string lastname);
     }
 
     public class UserRepository : IUserRepository
@@ -33,6 +34,21 @@ namespace DataAccessLayer.Repositories
                 FirstName = user.FirstName,
                 LastName = user.LastName
             };
+        }
+
+        public void Add(string email, string password, string firstname, string lastname)
+        {
+            Customer user = new Customer()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = firstname,
+                LastName = lastname,
+                Password = password,
+                Email = email
+
+            };
+            context.Customer.Add(user);
+            context.SaveChanges();
         }
     }
 }
