@@ -31,6 +31,7 @@ namespace DataAccessLayer.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>().HasKey(key => key.Id);
+            modelBuilder.Entity<Product>().HasKey(key => key.Id);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -40,5 +41,6 @@ namespace DataAccessLayer.Context
         }
 
         public DbSet<Customer> Customer { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

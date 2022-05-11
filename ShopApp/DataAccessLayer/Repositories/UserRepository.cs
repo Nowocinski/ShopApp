@@ -6,6 +6,7 @@ namespace DataAccessLayer.Repositories
 {
     public interface IUserRepository
     {
+        // TODO: Funknje powinny być asynchroniczne
         UserViewModel LogIn(string email, string password);
         void Add(string email, string password, string firstname, string lastname);
     }
