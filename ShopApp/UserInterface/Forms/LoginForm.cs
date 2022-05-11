@@ -29,6 +29,15 @@ namespace UserInterface.Forms
         private void loginButton_Click(object sender, EventArgs e)
         {
             UserViewModel user = this.userRepository.LogIn(this.emailTextBox.Text, this.passwordTextBox.Text);
+
+            if (user is null)
+            {
+                throw new NotImplementedException();
+            }
+
+            this.Hide();
+            new ProductListForm().ShowDialog();
+            this.Close();
         }
     }
 }
