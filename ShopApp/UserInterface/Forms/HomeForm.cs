@@ -1,23 +1,27 @@
-﻿namespace UserInterface.Forms
+﻿using UserInterface.Forms.Facory;
+
+namespace UserInterface.Forms
 {
     public partial class HomeForm : Form
     {
-        public HomeForm()
+        private readonly FormsFactory formsFactory;
+        public HomeForm(FormsFactory formsFactory)
         {
             InitializeComponent();
+            this.formsFactory = formsFactory;
         }
 
         private void loggingButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new LoginForm().ShowDialog();
+            this.formsFactory.CreateForm(FormType.Login).ShowDialog();
             this.Close();
         }
 
         private void signupButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new RegistrationForm().ShowDialog();
+            this.formsFactory.CreateForm(FormType.Registration).ShowDialog();
             this.Close();
         }
     }

@@ -1,17 +1,19 @@
 ﻿using DataAccessLayer.Repositories;
 using DataAccessLayer.ViewModel;
+using UserInterface.Forms.Facory;
 
 namespace UserInterface.Forms
 {
     public partial class LoginForm : Form
     {
+        private readonly FormsFactory formsFactory;
         private readonly IUserRepository userRepository;
-        public LoginForm()
+        public LoginForm(FormsFactory formsFactory, IUserRepository userRepository)
         {
             InitializeComponent();
 
-            // TODO: Do zastanowienia. Działa, ale tworzenie obiektu powinno wykonywać się przez DI.
-            this.userRepository = new UserRepository();
+            this.formsFactory = formsFactory;
+            this.userRepository = userRepository;
         }
 
         private void signupButton_Click(object sender, EventArgs e)
@@ -22,7 +24,7 @@ namespace UserInterface.Forms
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new HomeForm().ShowDialog();
+            this.formsFactory.CreateForm(FormType.Home).ShowDialog();
             this.Close();
         }
 
@@ -32,11 +34,12 @@ namespace UserInterface.Forms
 
             if (user is null)
             {
+                // TODO: Obsługa przypadku kiedy użytkownik nie istnieje w bazie danych.
                 throw new NotImplementedException();
             }
 
             this.Hide();
-            new ProductListForm().ShowDialog();
+            this.formsFactory.CreateForm(FormType.ProductList).ShowDialog();
             this.Close();
         }
     }

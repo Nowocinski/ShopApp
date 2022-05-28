@@ -2,6 +2,7 @@ using DataAccessLayer.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using UserInterface.Forms;
+using UserInterface.Forms.Facory;
 
 namespace UserInterface
 {
@@ -33,6 +34,8 @@ namespace UserInterface
                     services.AddTransient<HomeForm>();
                     services.AddTransient<LoginForm>();
                     services.AddTransient<IUserRepository, UserRepository>();
+                    services.AddTransient<IProductRepository, ProductRepository>();
+                    services.AddTransient<FormsFactory>();
                 });
         }
     }

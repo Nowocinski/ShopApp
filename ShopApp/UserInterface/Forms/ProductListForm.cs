@@ -6,11 +6,11 @@ namespace UserInterface.Forms
     public partial class ProductListForm : Form
     {
         private readonly IProductRepository productRepository;
-        public ProductListForm()
+        public ProductListForm(IProductRepository productRepository)
         {
             InitializeComponent();
 
-            this. productRepository = new ProductRepository();
+            this. productRepository = productRepository;
         }
 
         private async void ProductListForm_Load(object sender, EventArgs e)
