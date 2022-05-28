@@ -12,7 +12,7 @@ namespace UserInterface.Forms
             InitializeComponent();
 
             this.formsFactory = formsFactory;
-            this.userRepository = new UserRepository();
+            this.userRepository = userRepository;
         }
 
         private void backBatton_Click(object sender, EventArgs e)
